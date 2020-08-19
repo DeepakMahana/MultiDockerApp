@@ -24,3 +24,15 @@ after_success:
     - docker push deepakm/multi-server
     - docker push deepakm/multi-worker
 
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: us-west-1
+    app: DockerApp
+    env: DockerApp-env
+    bucket_name: elasticbeanstalk-us-west-1-389283982932
+    bucket_path: DockerApp
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
